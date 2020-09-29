@@ -19,7 +19,7 @@ const IsHardwareReadyPage = ({ navigation }) => {
                     }}
                 />
                 <Button
-                    onPress={() => navigation.navigate('IsHardwareReady')}
+                    onPress={() => navigation.navigate('VerifyConnection')}
                     title="Next ->"
                     color="#0099F7"
                     height='40px'

@@ -14,10 +14,11 @@ import ShopPage from './pages/shop/ShopPage';
 import MapPage from './pages/payments/Map';
 
 //Home screens
-import Hardware1 from "./pages/home/hardwareReady/hardware1";
-import Hardware2 from "./pages/home/hardwareReady/hardware2";
 import ConfirmDetailsPage from './pages/home/homescreens/confirmDetailsPage';
 import IsHardwareReadyPage from './pages/home/homescreens/isHardwareReadyPage';
+import VerifyConnectionPage from './pages/home/homescreens/verifyConnectionPage';
+import TakePhotoPage from './pages/home/homescreens/takePhotoPage';
+import ShareLocationPage from './pages/home/homescreens/shareLocationPage';
 
 const NestedStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,9 @@ export default function App() {
         <NestedStack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
         <NestedStack.Screen name="ConfirmDetails" component={ConfirmDetailsPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="IsHardwareReady" component={IsHardwareReadyPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="VerifyConnection" component={VerifyConnectionPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="TakePhoto" component={TakePhotoPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ShareLocation" component={ShareLocationPage} options={{ headerShown: false }} />
       </NestedStack.Navigator>
     )
   }
