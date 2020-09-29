@@ -15,8 +15,6 @@ const HomeNav = ({ navigation }) => {
                 width: '100%',
                 height: 105, //84 * ratio,
                 flex: 1,
-                borderBottom: '2px ridge ghostwhite',
-                boxShadow: '1px 1px 1px #888888',
             }}
         />
     )
