@@ -13,7 +13,7 @@ const Details = ({ navigation }) => {
                         source={require('../../../assets/pageImages/harwarePages/Screen2.png')}
                         style={{
                             width: '100%',
-                            height: 853 * ratio,
+                            height: 1188 * ratio,
                             flex: 1,
                         }} />
                 </TouchableWithoutFeedback>

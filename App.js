@@ -14,37 +14,19 @@ import ShopPage from './pages/shop/ShopPage';
 import MapPage from './pages/payments/Map';
 
 //Home screens
-import Details from './pages/home/hardwareReady/details';
-import Hardware1 from "./pages/home/hardwareReady/hardware1";
-import Hardware2 from "./pages/home/hardwareReady/hardware2";
+import ConfirmDetailsPage from './pages/home/homescreens/confirmDetailsPage';
+import IsHardwareReadyPage from './pages/home/homescreens/isHardwareReadyPage';
+import VerifyConnectionPage from './pages/home/homescreens/verifyConnectionPage';
+import TakePhotoPage from './pages/home/homescreens/takePhotoPage';
+import ShareLocationPage from './pages/home/homescreens/shareLocationPage';
+import ImagePreview from './pages/home/homescreens/imagePreview';
 
 const NestedStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const HomeNavigator = () => {
+  const TabsNavigation = () => {
     return (
-      <NestedStack.Navigator>
-        <NestedStack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
-        <NestedStack.Screen name="Details" component={Details} options={{ headerShown: false }} />
-        <NestedStack.Screen name="Emehdo1" component={Hardware1} options={{ headerShown: false }} />
-        <NestedStack.Screen name="Emehdo2" component={Hardware2} options={{ headerShown: false }} />
-      </NestedStack.Navigator>
-    )
-  }
-
-  const ServicesNavigator = () => {
-    return (
-      <NestedStack.Navigator>
-        <NestedStack.Screen name="Services" component={ServicesPage} options={{ headerShown: false }} />
-        <NestedStack.Screen name="Emehdo1" component={Hardware1} options={{ headerShown: false }} />
-        <NestedStack.Screen name="Emehdo2" component={Hardware2} options={{ headerShown: false }} />
-      </NestedStack.Navigator>
-    )
-  }
-
-  return (
-    <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
           name="Home"
@@ -118,6 +100,34 @@ export default function App() {
           }}
         />
       </Tab.Navigator>
+    )
+  }
+
+  const HomeNavigator = () => {
+    return (
+      <NestedStack.Navigator>
+        <NestedStack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ConfirmDetails" component={ConfirmDetailsPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="IsHardwareReady" component={IsHardwareReadyPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="VerifyConnection" component={VerifyConnectionPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="TakePhoto" component={TakePhotoPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ImagePreview" component={ImagePreview} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ShareLocation" component={ShareLocationPage} options={{ headerShown: false }} />
+      </NestedStack.Navigator>
+    )
+  }
+
+  const ServicesNavigator = () => {
+    return (
+      <NestedStack.Navigator>
+        <NestedStack.Screen name="Services" component={ServicesPage} options={{ headerShown: false }} />
+      </NestedStack.Navigator>
+    )
+  }
+
+  return (
+    <NavigationContainer>
+      <TabsNavigation />
     </NavigationContainer>
   );
 }
