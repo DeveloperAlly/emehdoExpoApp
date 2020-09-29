@@ -5,13 +5,15 @@ import { StyleSheet, Image, View, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Constants from 'expo-constants';
+//Constants.platform =='ios' || 'android'
 
 import HomePage from './pages/home/homePage';
 import ServicesPage from './pages/services/servicesPage'
 import PaymentsPage from './pages/payments/PaymentsPage'
 import HelpPage from './pages/help/HelpPage';
 import ShopPage from './pages/shop/ShopPage';
-import MapContainer from './pages/payments/Map';
+// import MapContainer from './pages/payments/Map';
 
 // import LocationScreen from './pages/shop/LocationScreen';
 import MapScreen from './pages/shop/MapScreen';
@@ -63,7 +65,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Payments"
-          component={MapContainer}
+          component={PaymentsPage}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
