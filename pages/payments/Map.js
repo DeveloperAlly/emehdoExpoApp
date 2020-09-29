@@ -9,7 +9,7 @@ const MapPage = ({ navigation }) => {
     }
 
     return (
-        <ScrollView
+        <View
             style={{
                 flex: 1,
                 backgroundColor: '#fff',
@@ -18,7 +18,7 @@ const MapPage = ({ navigation }) => {
             }}
         >
             <Text>Map</Text>
-        </ScrollView>
+        </View>
     )
 }
 
