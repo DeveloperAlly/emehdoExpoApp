@@ -28,23 +28,31 @@ export default function MapScreen() {
     }, []);
 
     return (
-        location ?
-            <MapView
-                style={{ flex: 1 }}
-                provider={PROVIDER_GOOGLE}
-                googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-                showsUserLocation
-                region={region}
-                onRegionChangeComplete={region => setRegion(region)}
-            >
-                <Marker coordinate={location || region} />
-                {/* <Marker draggable
-                coordinate={this.state.x}
-                onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
-            /> */}
-            </MapView>
-            :
-            <Text> Loading... </Text>
+        <>
+            {
+                location ?
+                    <MapView
+                        zoomControlEnabled
+                        maxZoomLevel={9}
+                        style={{ flex: 1 }}
+                        provider={PROVIDER_GOOGLE}
+                        googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
+                        showsUserLocation
+                        region={region}
+                        onRegionChangeComplete={region => setRegion(region)}
+                    >
+                        <Marker coordinate={location || region} />
+                        {/* <Marker draggable
+                            coordinate={this.state.x}
+                            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
+                        /> */}
+                    </MapView>
+                    :
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text> Loading... </Text>
+                    </View>
+            }
+        </>
     )
 
 }
