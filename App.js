@@ -5,13 +5,18 @@ import { StyleSheet, Image, View, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Constants from 'expo-constants';
+//Constants.platform =='ios' || 'android'
 
 import HomePage from './pages/home/homePage';
 import ServicesPage from './pages/services/servicesPage'
 import PaymentsPage from './pages/payments/PaymentsPage'
 import HelpPage from './pages/help/HelpPage';
 import ShopPage from './pages/shop/ShopPage';
-import MapPage from './pages/payments/Map';
+// import MapContainer from './pages/payments/Map';
+
+// import LocationScreen from './pages/shop/LocationScreen';
+import MapScreen from './pages/shop/MapScreen';
 
 //Home screens
 import ConfirmDetailsPage from './pages/home/homescreens/confirmDetailsPage';
@@ -20,6 +25,8 @@ import VerifyConnectionPage from './pages/home/homescreens/verifyConnectionPage'
 import TakePhotoPage from './pages/home/homescreens/takePhotoPage';
 import ShareLocationPage from './pages/home/homescreens/shareLocationPage';
 import ImagePreview from './pages/home/homescreens/imagePreview';
+import FinalStep from './pages/home/homescreens/finalStep';
+import LocationScreen from './pages/shop/LocationScreen';
 
 const NestedStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,7 +66,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Payments"
-          component={MapPage}
+          component={LocationScreen}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
@@ -73,7 +80,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Get Help"
-          component={HelpPage}
+          component={MapScreen}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
@@ -106,13 +113,14 @@ export default function App() {
   const HomeNavigator = () => {
     return (
       <NestedStack.Navigator>
-        <NestedStack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }} />
         <NestedStack.Screen name="ConfirmDetails" component={ConfirmDetailsPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="IsHardwareReady" component={IsHardwareReadyPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="VerifyConnection" component={VerifyConnectionPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="FinalStep" component={FinalStep} options={{ headerShown: false }} />
         <NestedStack.Screen name="TakePhoto" component={TakePhotoPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="ImagePreview" component={ImagePreview} options={{ headerShown: false }} />
-        <NestedStack.Screen name="ShareLocation" component={ShareLocationPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ShareLocation" component={MapScreen} options={{ headerShown: false }} />
       </NestedStack.Navigator>
     )
   }

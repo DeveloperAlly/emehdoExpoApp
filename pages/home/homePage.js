@@ -12,7 +12,7 @@ const HomePage = ({ navigation }) => {
     return (
         <>
             <HomeNav />
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ marginTop: 84 * ratio - 10, backgroundColor: 'white' }}>
                 <TouchableWithoutFeedback onPress={_onPressButton}>
                     <Image
                         source={require('../../assets/pageImages/homepage.png')}

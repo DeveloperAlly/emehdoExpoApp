@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Dimensions, ScrollView, Image, View, Text } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, TouchableOpacity, Dimensions, ScrollView, Image, View, Text } from 'react-native';
 import EmehdoNav from '../../navbar/emehdonav';
 
 // 375 × 853
-const IsHardwareReadyPage = ({ navigation }) => {
+const FinalStep = ({ navigation }) => {
     const ratio = Dimensions.get('window').width / 375;
 
     return (
@@ -11,26 +11,25 @@ const IsHardwareReadyPage = ({ navigation }) => {
             <EmehdoNav />
             <ScrollView
                 contentContainerStyle={{ flexGrow: 1 }}
-                style={{ marginTop: 84 * ratio - 10, backgroundColor: 'white' }}
             >
                 <Image
-                    source={require('../../../assets/pageImages/home/ishardwareready.png')}
+                    source={require('../../../assets/pageImages/home/step4.png')}
                     style={{
-                        width: Dimensions.get('window').width,
-                        height: 609 * ratio,
+                        width: '100%',
+                        height: 1037 * ratio,
                         flex: 1,
                     }}
                 />
                 <View style={styles.buttoncontainer}>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         style={styles.secondarybutton}>
                         <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('VerifyConnection')}
+                        onPress={() => navigation.navigate('Services')}
                         style={styles.mainbutton}>
-                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
+                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>SUBMIT</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -45,8 +44,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         backgroundColor: 'white',
         textAlign: 'center',
-        paddingBottom: 30,
-        paddingTop: 30
+        paddingBottom: 30
     },
     secondarybutton: {
         height: 40,
@@ -60,9 +58,9 @@ const styles = StyleSheet.create({
     },
     mainbutton: {
         height: 40,
-        minWidth: 150,
+        minWidth: 300,
         borderRadius: 2,
-        backgroundColor: "#0099F7",
+        backgroundColor: "#35237F",
         textAlign: 'center',
         display: 'flex',
         justifyContent: 'center',
@@ -71,4 +69,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default IsHardwareReadyPage;
+
+export default FinalStep;

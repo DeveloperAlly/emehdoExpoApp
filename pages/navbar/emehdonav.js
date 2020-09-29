@@ -12,9 +12,13 @@ const EmehdoNav = ({ navigation }) => {
         <Image
             source={require('../../assets/pageImages/navbar/emehdonav.png')}
             style={{
-                width: '100%',
-                height: 105, //84 * ratio,
-                flex: 1,
+                width: Dimensions.get('window').width,
+                height: 89 * ratio,
+                borderColor: 'lightgrey',
+                zIndex: 10,
+                position: 'absolute',
+                top: 0,
+                left: 0
             }}
         />
     )
