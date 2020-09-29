@@ -2,15 +2,15 @@ import React from 'react';
 import { Image, Dimensions } from 'react-native';
 
 //375 × 940
-const HomeNav = ({ navigation }) => {
+const SummaryNav = ({ navigation }) => {
     const ratio = Dimensions.get('window').width / 375;
 
     return (
         <Image
-            source={require('../../assets/pageImages/navbar/homenav.png')}
+            source={require('../../assets/pageImages/navbar/summarynav.png')}
             style={{
                 width: Dimensions.get('window').width,
-                height: 84 * ratio,
+                height: 89 * ratio,
                 borderColor: 'lightgrey',
                 zIndex: 10,
                 position: 'absolute',
@@ -21,4 +21,4 @@ const HomeNav = ({ navigation }) => {
     )
 }
 
-export default HomeNav;
+export default SummaryNav;

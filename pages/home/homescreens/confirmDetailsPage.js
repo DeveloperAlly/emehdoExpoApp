@@ -10,126 +10,64 @@ const ConfirmDetailsPage = ({ navigation }) => {
 
     return (
         <>
-            {/* <View
-                style={{
-                    width: Dimensions.get('window').width,
-                    height: 105, //84 * ratio,
-                    flex: 1,
-                }}
-            > */}
-            <Image
-                source={require('../../../assets/pageImages/navbar/emehdonav.png')}
-                style={{
-                    width: Dimensions.get('window').width,
-                    height: 105, //84 * ratio,
-                    flex: 1,
-                    borderBottomWidth: 2,
-                    borderColor: 'lightgrey',
-                    // position: 'absolute',
-                    // top: 0,
-                    // left: 0
-                }}
-            />
-            {/* </View> */}
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <EmehdoNav />
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ marginTop: 89 * ratio - 10, backgroundColor: 'white' }}>
                 {/* <TouchableWithoutFeedback onPress={() => navigation.navigate('ConfirmDetails')}> */}
                 <Image
                     source={require('../../../assets/pageImages/home/confirmdetails.png')}
                     style={{
-                        width: '100%',
-                        height: 1029 * ratio,
+                        width: Dimensions.get('window').width,
+                        height: 941 * ratio,
                         flex: 1,
                     }}
                 />
-                <View style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-evenly',
-                    backgroundColor: 'white',
-                    textAlign: 'center',
-                    paddingBottom: 30
-                }}>
+                <View style={styles.buttoncontainer}>
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
-                        style={{
-                            height: 50,
-                            minWidth: 130,
-                            borderRadius: 5,
-                            textAlign: 'center',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            borderWidth: 1,
-                            borderColor: 'lightgrey'
-                        }}>
+                        style={styles.secondarybutton}>
                         <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('IsHardwareReady')}
-                        style={{
-                            height: 50,
-                            minWidth: 130,
-                            borderRadius: 5,
-                            backgroundColor: "#0099F7",
-                            textAlign: 'center',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            border: '1px solid lightgrey'
-                        }}>
+                        style={styles.mainbutton}>
                         <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                     </TouchableOpacity>
                 </View>
-                {/* <View style={styles.container}>
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        style={{
-                            height: 35,
-                            minWidth: 120,
-                            borderRadius: 5,
-                            textAlign: 'center',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            border: '1px solid lightgrey'
-                        }}>
-                        <Text style={{ color: 'grey' }}>BACK</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('IsHardwareReady')}
-                        style={{
-                            height: 35,
-                            minWidth: 120,
-                            borderRadius: 5,
-                            backgroundColor: "#0099F7",
-                            textAlign: 'center',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            border: '1px solid lightgrey'
-                        }}>
-                        <Text style={{ color: 'ghostwhite' }}>NEXT</Text>
-                    </TouchableOpacity>
-                </View> */}
-                {/* </TouchableWithoutFeedback> */}
             </ScrollView>
-        </ >
+        </>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
+    buttoncontainer: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        padding: '10px',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        textAlign: 'center',
+        paddingBottom: 30,
+        paddingTop: 30
     },
-    buttonStyle: {
+    secondarybutton: {
         height: 40,
-        minWidth: 100,
-        borderRadius: 10,
-        backgroundColor: "yellow",
-        color: 'yellow',
+        minWidth: 150,
+        borderRadius: 2,
         textAlign: 'center',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
+    },
+    mainbutton: {
+        height: 40,
+        minWidth: 150,
+        borderRadius: 2,
+        backgroundColor: "#0099F7",
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
     },
 });
 

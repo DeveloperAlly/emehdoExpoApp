@@ -1,13 +1,59 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-export default function ImagePreview({ route, navigation }) {
+const ImagePreview = ({ route, navigation }) => {
     const { photo } = route.params;
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>There should be an image</Text>
             <Image source={{ uri: photo }} style={{ width: 380, height: 550 }} />
+            <View style={styles.buttoncontainer}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={styles.secondarybutton}>
+                    <Text style={{ color: 'grey', textAlign: 'center' }}>RETAKE</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('FinalStep')}
+                    style={styles.mainbutton}>
+                    <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>ATTACH</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    buttoncontainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: '100%',
+        textAlign: 'center',
+        paddingBottom: 10,
+        paddingTop: 30
+    },
+    secondarybutton: {
+        height: 40,
+        minWidth: 150,
+        borderRadius: 2,
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
+    },
+    mainbutton: {
+        height: 40,
+        minWidth: 150,
+        borderRadius: 2,
+        backgroundColor: "#0099F7",
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
+    },
+});
+
+export default ImagePreview;
