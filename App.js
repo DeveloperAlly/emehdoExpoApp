@@ -27,6 +27,7 @@ import ShareLocationPage from './pages/home/homescreens/shareLocationPage';
 import ImagePreview from './pages/home/homescreens/imagePreview';
 import FinalStep from './pages/home/homescreens/finalStep';
 import LocationScreen from './pages/shop/LocationScreen';
+import { MapContainer } from './pages/payments/Map';
 
 const NestedStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -66,7 +67,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Payments"
-          component={LocationScreen}
+          component={PaymentsPage}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
@@ -80,7 +81,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Get Help"
-          component={MapScreen}
+          component={HelpPage}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (

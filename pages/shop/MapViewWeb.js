@@ -4,7 +4,7 @@ import EmehdoNav from '../../navbar/emehdonav';
 import Constants from 'expo-constants';
 
 // 375 × 853
-const ConfirmDetailsPage = ({ navigation }) => {
+const MapViewWeb = ({ navigation }) => {
     const ratio = Dimensions.get('window').width / 375;
 
     return (
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ConfirmDetailsPage;
+export default MapViewWeb;
