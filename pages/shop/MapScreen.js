@@ -26,7 +26,7 @@ const MapScreen = ({ navigation }) => {
 
     return (
         <>
-            {Platform.OS === 'ios?'
+            {Platform.OS === 'ios'
                 ? <MapViewAndroid myLocation={location} navigation={navigation} />
                 : Platform.OS === 'android'
                     ? <MapViewAndroid myLocation={location} navigation={navigation} />

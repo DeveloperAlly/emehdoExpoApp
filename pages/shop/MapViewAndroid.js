@@ -37,10 +37,17 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                     width: Dimensions.get('window').width,
                     height: Dimensions.get('window').height - 150,
                 }}
-                provider={PROVIDER_GOOGLE}
+                provider="google"
                 googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
                 showsUserLocation
-                region={region}
+
+                // {Platform.OS === 'ios'
+                //     ? 
+                //     : 
+                // }
+                
+                initialRegion={region} 
+
                 onRegionChangeComplete={region => setRegion(region)}
             >
                 <Marker coordinate={location} />
