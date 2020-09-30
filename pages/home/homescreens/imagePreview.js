@@ -14,7 +14,7 @@ const ImagePreview = ({ route, navigation }) => {
                     <Text style={{ color: 'grey', textAlign: 'center' }}>RETAKE</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('FinalStep')}
+                    onPress={() => navigation.navigate('VerifyConnection')}
                     style={styles.mainbutton}>
                     <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>ATTACH</Text>
                 </TouchableOpacity>
