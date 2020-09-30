@@ -37,7 +37,7 @@ const VerifyConnectionPage = ({ navigation }) => {
                         <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('FinalStep')}
+                        onPress={() => navigation.navigate('Step3')}
                         style={styles.mainbutton}>
                         <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                     </TouchableOpacity>

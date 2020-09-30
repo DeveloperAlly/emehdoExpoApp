@@ -1,8 +1,23 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 
 const ImagePreview = ({ route, navigation }) => {
     const { photo } = route.params;
+
+    // async function _storeData(photo) {
+    //     // alert(photo)
+    //     try {
+    //         let photoString = JSON.stringify(photo);
+    //         alert(photoString)
+    //     } catch (error) {
+    //         alert('error')
+    //     }
+    // }
+
+    async function _storeData(photo) {
+        await AsyncStorage.setItem('photo', JSON.stringify(photo)).then(alert('saved'))
+
+    }
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -14,7 +29,7 @@ const ImagePreview = ({ route, navigation }) => {
                     <Text style={{ color: 'grey', textAlign: 'center' }}>RETAKE</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('VerifyConnection')}
+                    onPress={() => _storeData(photo)}
                     style={styles.mainbutton}>
                     <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>ATTACH</Text>
                 </TouchableOpacity>
