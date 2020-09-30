@@ -47,7 +47,7 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                     }}
                     provider="google"
                     googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-                    showsUserLocation
+                    showsUserLocation={true}
                     initialRegion={region}
                     onRegionChangeComplete={region => setRegion(region)}
                 >
