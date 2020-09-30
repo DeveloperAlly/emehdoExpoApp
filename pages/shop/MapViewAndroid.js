@@ -8,6 +8,7 @@ import * as Constants from 'expo-constants';
 const MapViewAndroid = ({ myLocation, navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [x, setX] = useState(null)
     const [region, setRegion] = useState({
         latitude: -35.0574823,
         longitude: 150.6718037,
@@ -44,10 +45,13 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                 onRegionChangeComplete={region => setRegion(region)}
             >
                 <Marker coordinate={location} />
-                {/* <Marker draggable
-                coordinate={this.state.x}
-                onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
-            /> */}
+                <Marker
+                    draggable
+                    coordinate={location}
+                    onDragEnd={(e) => setLocation(e.nativeEvent.coordinate)}
+                // coordinate={this.state.x}
+                // onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
+                />
                 <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Text>{location.longitude}</Text>
                     <Text>{location.latitude}</Text>
@@ -76,7 +80,7 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                     <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('FinalStep')}
+                    onPress={() => navigation.navigate('Step3')}
                     style={styles.mainbutton}>
                     <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                 </TouchableOpacity>
