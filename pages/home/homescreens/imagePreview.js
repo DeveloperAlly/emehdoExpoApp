@@ -4,19 +4,8 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, AsyncStorage } from 'r
 const ImagePreview = ({ route, navigation }) => {
     const { photo } = route.params;
 
-    // async function _storeData(photo) {
-    //     // alert(photo)
-    //     try {
-    //         let photoString = JSON.stringify(photo);
-    //         alert(photoString)
-    //     } catch (error) {
-    //         alert('error')
-    //     }
-    // }
-
     async function _storeData(photo) {
-        await AsyncStorage.setItem('photo', JSON.stringify(photo)).then(alert('saved'))
-
+        await AsyncStorage.setItem('photo', JSON.stringify(photo)).then(() => navigation.navigate('Step3'))
     }
 
     return (
