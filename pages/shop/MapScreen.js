@@ -30,7 +30,7 @@ const MapScreen = ({ navigation }) => {
                 ? <MapViewAndroid myLocation={location} navigation={navigation} />
                 : Platform.OS === 'android'
                     ? <MapViewAndroid myLocation={location} navigation={navigation} />
-                    : <Text>WEB</Text>}
+                    : <Text>Feature not supported on web</Text>}
         </>
     )
 
