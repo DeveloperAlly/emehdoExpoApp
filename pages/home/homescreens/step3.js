@@ -69,19 +69,14 @@ const Step3 = ({ navigation }) => {
                             <MapView
                                 zoomControlEnabled
                                 maxZoomLevel={15}
-                                style={{ width: Dimensions.get('window').width - 30, height: 300 * ratio, }}
+                                style={{ width: Dimensions.get('window').width, height: 300 * ratio, }}
                                 provider="google"
                                 googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-                                showsUserLocation
+                                // showsUserLocation
                                 initialRegion={region}
-                                onRegionChangeComplete={region => setRegion(region)}
+                            // onRegionChangeComplete={region => setRegion(region)}
                             >
                                 <Marker coordinate={location} />
-                                <View>
-                                    {/* <View style={{ height: Dimensions.get('window').width - 30, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'white' }}> */}
-                                    <Text>{location.longitude}</Text>
-                                    <Text>{location.latitude}</Text>
-                                </View>
                             </MapView>
                         </View>) :
                     (<View style={styles.mapcontainer}>
@@ -133,12 +128,13 @@ const styles = StyleSheet.create({
     },
     mapcontainer: {
         display: 'flex',
-        marginBottom: 30,
+        // margin: 30,
+        backgroundColor: 'white',
         borderWidth: 1,
         borderColor: 'lightgrey',
         justifyContent: 'center',
         alignItems: 'center',
-        width: Dimensions.get('window').width - 30,
+        width: Dimensions.get('window').width,
         height: 300 * ratio,
     },
     buttoncontainer: {
