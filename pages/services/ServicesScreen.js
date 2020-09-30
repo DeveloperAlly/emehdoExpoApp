@@ -58,7 +58,7 @@ const ServicesScreen = ({ navigation }) => {
                 <View style={styles.container}>
                     {
                         photo !== null ?
-                            <Image source={{ uri: photo }} style={{ width: 200, height: 400 }} /> :
+                            <Image source={{ uri: photo }} style={{ width: 200, height: 300 }} /> :
                             <>
                                 <View style={styles.photocontainer}>
                                     <Text>Could not find image</Text>
@@ -84,7 +84,7 @@ const ServicesScreen = ({ navigation }) => {
                         <View style={styles.mapcontainer}>
                             <MapView
                                 zoomControlEnabled
-                                maxZoomLevel={15}
+                                maxZoomLevel={20}
                                 style={{ width: Dimensions.get('window').width - 30, height: 300 * ratio, }}
                                 provider="google"
                                 googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'

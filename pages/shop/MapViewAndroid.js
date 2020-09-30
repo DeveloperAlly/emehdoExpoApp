@@ -4,6 +4,8 @@ import MapView, { Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Constants from 'expo-constants';
 
+const ratio = Dimensions.get('window').width / 375;
+
 /** THIS WORKS ON ANDROID / MOBILE ONLY */
 const MapViewAndroid = ({ myLocation, navigation }) => {
     const [location, setLocation] = useState(null);
@@ -35,32 +37,34 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
 
     const renderMap = () => {
         return (
-            <MapView
-                zoomControlEnabled
-                maxZoomLevel={9}
-                style={{
-                    width: Dimensions.get('window').width,
-                    height: Dimensions.get('window').height - 150,
-                }}
-                provider="google"
-                googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-                showsUserLocation
-                initialRegion={region}
-                onRegionChangeComplete={region => setRegion(region)}
-            >
-                <Marker coordinate={location} />
-                {/* <Marker
+            <View style={styles.mapcontainer}>
+                <MapView
+                    // zoomControlEnabled
+                    maxZoomLevel={20}
+                    style={{
+                        width: Dimensions.get('window').width,
+                        height: Dimensions.get('window').height - 150,
+                    }}
+                    provider="google"
+                    googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
+                    showsUserLocation
+                    initialRegion={region}
+                    onRegionChangeComplete={region => setRegion(region)}
+                >
+                    <Marker coordinate={location} />
+                    {/* <Marker
                     draggable
                     coordinate={location}
                     onDragEnd={(e) => setLocation(e.nativeEvent.coordinate)}
                 // coordinate={this.state.x}
                 // onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
                 /> */}
-                <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'flex-end', alignItems: 'center' }}>
-                    <Text>{location.longitude}</Text>
-                    <Text>{location.latitude}</Text>
-                </View>
-            </MapView>
+                    <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <Text>{location.longitude}</Text>
+                        <Text>{location.latitude}</Text>
+                    </View>
+                </MapView>
+            </View>
         )
     }
 
@@ -95,6 +99,15 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
 }
 
 const styles = StyleSheet.create({
+    mapcontainer: {
+        display: 'flex',
+        borderWidth: 1,
+        borderColor: 'lightgrey',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height - 150,
+    },
     buttoncontainer: {
         display: 'flex',
         flexDirection: 'row',
