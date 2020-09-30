@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView, Image } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, Image, View, TouchableOpacity, Text } from 'react-native';
 import EmehdoNav from '../../navbar/emehdonav';
 
 // 375 × 853
