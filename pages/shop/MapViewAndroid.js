@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, StyleSheet, Dimensions, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Dimensions, Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import MapView, { Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Constants from 'expo-constants';
@@ -29,6 +29,10 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
         })();
     }, []);
 
+    async function _storeData(location) {
+        await AsyncStorage.setItem('location', JSON.stringify(location)).then(() => navigation.navigate('Step3'))
+    }
+
     const renderMap = () => {
         return (
             <MapView
@@ -41,24 +45,17 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                 provider="google"
                 googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
                 showsUserLocation
-
-                // {Platform.OS === 'ios'
-                //     ? 
-                //     : 
-                // }
-
                 initialRegion={region}
-
                 onRegionChangeComplete={region => setRegion(region)}
             >
                 <Marker coordinate={location} />
-                <Marker
+                {/* <Marker
                     draggable
                     coordinate={location}
                     onDragEnd={(e) => setLocation(e.nativeEvent.coordinate)}
                 // coordinate={this.state.x}
                 // onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
-                />
+                /> */}
                 <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Text>{location.longitude}</Text>
                     <Text>{location.latitude}</Text>
@@ -87,7 +84,7 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                     <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('Step3')}
+                    onPress={() => _storeData(location)}
                     style={styles.mainbutton}>
                     <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                 </TouchableOpacity>

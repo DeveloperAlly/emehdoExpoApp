@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage, StyleSheet, Dimensions, ScrollView, Image, View, TouchableOpacity, Text } from 'react-native';
+import MapView, { Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps';
 import EmehdoNav from '../../navbar/emehdonav';
 
 const ratio = Dimensions.get('window').width / 375;
@@ -8,34 +9,25 @@ const Step3 = ({ navigation }) => {
     const [photo, setPhoto] = useState(null);
     const [location, setLocation] = useState(null);
     const [error, setError] = useState(false);
+    const [region, setRegion] = useState({
+        latitude: -35.0574823,
+        longitude: 150.6718037,
+        latitudeDelta: 0.009,
+        longitudeDelta: 0.009
+    });
+
 
     useEffect(() => {
         (async () => {
             const photoString = await AsyncStorage.getItem('photo');
             setPhoto(JSON.parse(photoString));
             const locationString = await AsyncStorage.getItem('location');
-            setLocation(locationString);
+            const locationJSON = JSON.parse(locationString)
+            setLocation({ latitude: locationJSON.latitude, longitude: locationJSON.longitude });
+            setRegion({ ...region, latitude: locationJSON.latitude, longitude: locationJSON.longitude })
+            // alert(locationString)
         })();
     }, []);
-
-    const renderMap = () => {
-        return (
-            <MapView
-                zoomControlEnabled
-                maxZoomLevel={13}
-                style={styles.map}
-                provider="google"
-            // googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-            // showsUserLocation
-            >
-                <Marker coordinate={location} />
-                <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'white' }}>
-                    <Text>{location.longitude}</Text>
-                    <Text>{location.latitude}</Text>
-                </View>
-            </MapView>
-        )
-    }
 
     return (
         <>
@@ -72,16 +64,34 @@ const Step3 = ({ navigation }) => {
                         flex: 1,
                     }}
                 />
+                {location && location.latitude ?
+                    (
+                        <View style={styles.mapcontainer}>
+                            <MapView
+                                zoomControlEnabled
+                                maxZoomLevel={15}
+                                style={{ width: Dimensions.get('window').width - 30, height: 300 * ratio, }}
+                                provider="google"
+                                googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
+                                showsUserLocation
+                                initialRegion={region}
+                                onRegionChangeComplete={region => setRegion(region)}
+                            >
+                                <Marker coordinate={location} />
+                                <View>
+                                    {/* <View style={{ height: Dimensions.get('window').width - 30, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'white' }}> */}
+                                    <Text>{location.longitude}</Text>
+                                    <Text>{location.latitude}</Text>
+                                </View>
+                            </MapView>
+                        </View>) :
+                    (<View style={styles.mapcontainer}>
+                        <Text>Could not get location</Text>
+                    </View>)
+                }
                 <View style={styles.container}>
-                    {
-                        location !== null ?
-                            renderMap() :
-                            <View style={styles.mapcontainer}>
-                                <Text>Could not get location</Text>
-                            </View>
-                    }
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('TakePhotoPage')}
+                        onPress={() => navigation.navigate('ShareLocation')}
                         style={styles.bigbutton}>
                         <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>SHARE LOCATION</Text>
                     </TouchableOpacity>
@@ -93,7 +103,7 @@ const Step3 = ({ navigation }) => {
                         <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('IsHardwareReady')}
+                        onPress={() => navigation.navigate('FinalStep')}
                         style={styles.mainbutton}>
                         <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                     </TouchableOpacity>
