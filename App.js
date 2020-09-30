@@ -29,6 +29,7 @@ import Step3 from './pages/home/homescreens/step3';
 import FinalStep from './pages/home/homescreens/finalStep';
 import LocationScreen from './pages/shop/LocationScreen';
 import { MapContainer } from './pages/payments/Map';
+import ServicesScreen from './pages/services/ServicesScreen';
 
 const NestedStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -131,7 +132,7 @@ export default function App() {
   const ServicesNavigator = () => {
     return (
       <NestedStack.Navigator>
-        <NestedStack.Screen name="Services" component={ServicesPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="Services" component={ServicesScreen} options={{ headerShown: false }} />
       </NestedStack.Navigator>
     )
   }

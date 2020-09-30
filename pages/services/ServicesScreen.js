@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage, StyleSheet, Dimensions, ScrollView, Image, View, TouchableOpacity, Text } from 'react-native';
 import MapView, { Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps';
-import EmehdoNav from '../../navbar/emehdonav';
+import SummaryNav from '../navbar/summarynav';
 
 const ratio = Dimensions.get('window').width / 375;
 // 375 × 853
-const Step3 = ({ navigation }) => {
+const ServicesScreen = ({ navigation }) => {
     const [photo, setPhoto] = useState(null);
     const [location, setLocation] = useState(null);
     const [error, setError] = useState(false);
@@ -15,7 +15,6 @@ const Step3 = ({ navigation }) => {
         latitudeDelta: 0.009,
         longitudeDelta: 0.009
     });
-
 
     useEffect(() => {
         (async () => {
@@ -30,14 +29,29 @@ const Step3 = ({ navigation }) => {
 
     return (
         <>
-            <EmehdoNav />
+            <SummaryNav />
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                {/* <TouchableWithoutFeedback onPress={() => navigation.navigate('ConfirmDetails')}> */}
                 <Image
-                    source={require('../../../assets/pageImages/home/Step3a.png')}
+                    source={require('../../assets/pageImages/home/servicespageA.png')}
                     style={{
                         width: Dimensions.get('window').width,
-                        height: 604 * ratio,
+                        height: 746 * ratio,
+                        flex: 1,
+                    }}
+                />
+                <Image
+                    source={require('../../assets/pageImages/home/servicespageB.png')}
+                    style={{
+                        width: Dimensions.get('window').width,
+                        height: 683 * ratio,
+                        flex: 1,
+                    }}
+                />
+                <Image
+                    source={require('../../assets/pageImages/home/servicespageC.png')}
+                    style={{
+                        width: Dimensions.get('window').width,
+                        height: 363 * ratio,
                         flex: 1,
                     }}
                 />
@@ -45,21 +59,23 @@ const Step3 = ({ navigation }) => {
                     {
                         photo !== null ?
                             <Image source={{ uri: photo }} style={{ width: 200, height: 400 }} /> :
-                            <View style={styles.photocontainer}>
-                                <Text>Could not find image</Text>
-                            </View>
+                            <>
+                                <View style={styles.photocontainer}>
+                                    <Text>Could not find image</Text>
+                                </View>
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate('TakePhotoPage')}
+                                    style={styles.bigbutton}>
+                                    <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>RETAKE PHOTO</Text>
+                                </TouchableOpacity>
+                            </>
                     }
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('TakePhotoPage')}
-                        style={styles.bigbutton}>
-                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>RETAKE PHOTO</Text>
-                    </TouchableOpacity>
                 </View>
                 <Image
-                    source={require('../../../assets/pageImages/home/Step3b.png')}
+                    source={require('../../assets/pageImages/home/servicespageD.png')}
                     style={{
                         width: Dimensions.get('window').width,
-                        height: 255 * ratio,
+                        height: 111 * ratio,
                         flex: 1,
                     }}
                 />
@@ -84,27 +100,34 @@ const Step3 = ({ navigation }) => {
                                 </View>
                             </MapView>
                         </View>) :
-                    (<View style={styles.mapcontainer}>
-                        <Text>Could not get location</Text>
-                    </View>)
+                    (
+                        <>
+                            <View style={styles.mapcontainer}>
+                                <Text>Could not get location</Text>
+                            </View>
+                            <View style={styles.container}>
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate('ShareLocation')}
+                                    style={styles.bigbutton}>
+                                    <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>SHARE LOCATION</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                    )
                 }
-                <View style={styles.container}>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('ShareLocation')}
-                        style={styles.bigbutton}>
-                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>SHARE LOCATION</Text>
-                    </TouchableOpacity>
-                </View>
+                <Image
+                    source={require('../../assets/pageImages/home/servicespageE.png')}
+                    style={{
+                        width: Dimensions.get('window').width,
+                        height: 87 * ratio,
+                        flex: 1,
+                    }}
+                />
                 <View style={styles.buttoncontainer}>
                     <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        style={styles.secondarybutton}>
-                        <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
                         onPress={() => navigation.navigate('FinalStep')}
-                        style={styles.mainbutton}>
-                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
+                        style={styles.bigbutton}>
+                        <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>MANAGE INFORMATION</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -183,4 +206,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Step3;
+export default ServicesScreen;
