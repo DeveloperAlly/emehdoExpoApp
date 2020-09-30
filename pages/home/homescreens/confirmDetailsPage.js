@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Dimensions, ScrollView, Image, Button, StatusBar } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, TouchableOpacity, Text, View, Dimensions, ScrollView, Image } from 'react-native';
 import EmehdoNav from '../../navbar/emehdonav';
-import styled from 'styled-components';
+import Constants from 'expo-constants';
 
 // 375 × 853
 const ConfirmDetailsPage = ({ navigation }) => {

@@ -66,7 +66,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Payments"
-          component={LocationScreen}
+          component={MapScreen}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
@@ -80,7 +80,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Get Help"
-          component={MapScreen}
+          component={HelpPage}
           backBehavior='none'
           options={{
             tabBarIcon: ({ color }) => (
@@ -120,7 +120,7 @@ export default function App() {
         <NestedStack.Screen name="FinalStep" component={FinalStep} options={{ headerShown: false }} />
         <NestedStack.Screen name="TakePhoto" component={TakePhotoPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="ImagePreview" component={ImagePreview} options={{ headerShown: false }} />
-        <NestedStack.Screen name="ShareLocation" component={MapScreen} options={{ headerShown: false }} />
+        <NestedStack.Screen name="ShareLocation" component={HelpPage} options={{ headerShown: false }} />
       </NestedStack.Navigator>
     )
   }

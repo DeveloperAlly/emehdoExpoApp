@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { Platform, StyleSheet, Dimensions, Text, View, TouchableOpacity } from 'react-native';
+// import MapView, { Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
+import * as Constants from 'expo-constants';
+import MapViewAndroid from './MapViewAndroid';
 
 /** THIS WORKS ON ANDROID / MOBILE ONLY */
-export default function MapScreen() {
+const MapScreen = ({ navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [region, setRegion] = useState({
-        latitude: 51.5078788,
-        longitude: -0.0877321,
-        latitudeDelta: 0.009,
-        longitudeDelta: 0.009
-    });
 
     useEffect(() => {
         (async () => {
@@ -23,39 +19,58 @@ export default function MapScreen() {
 
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location.coords);
-            setRegion({ ...region, latitude: location.coords.latitude, longitude: location.coords.longitude })
+            // setRegion({ ...region, latitude: location.coords.latitude, longitude: location.coords.longitude })
         })();
     }, []);
 
+
     return (
         <>
-            {
-                location ?
-                    <MapView
-                        zoomControlEnabled
-                        maxZoomLevel={9}
-                        style={{ flex: 1 }}
-                        provider={PROVIDER_GOOGLE}
-                        googleMapsApiKey='AIzaSyDHIHypl6Oa6a6JjG_8nYs2uFU5X3egH_I'
-                        showsUserLocation
-                        region={region}
-                        onRegionChangeComplete={region => setRegion(region)}
-                    >
-                        <Marker coordinate={location || region} />
-                        {/* <Marker draggable
-                            coordinate={this.state.x}
-                            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
-                        /> */}
-                    </MapView>
-                    :
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text> Loading... </Text>
-                    </View>
-            }
+            {Platform.OS === 'ios?'
+                ? <MapViewAndroid myLocation={location} navigation={navigation} />
+                : Platform.OS === 'android'
+                    ? <MapViewAndroid myLocation={location} navigation={navigation} />
+                    : <Text>WEB</Text>}
         </>
     )
 
 }
+
+const styles = StyleSheet.create({
+    buttoncontainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        backgroundColor: 'white',
+        textAlign: 'center',
+        paddingBottom: 30,
+        paddingTop: 30,
+        zIndex: 50
+    },
+    secondarybutton: {
+        height: 40,
+        minWidth: 150,
+        borderRadius: 2,
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
+    },
+    mainbutton: {
+        height: 40,
+        minWidth: 150,
+        borderRadius: 2,
+        backgroundColor: "#0099F7",
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: 'lightgrey'
+    },
+});
+
+export default MapScreen;
 
 
 /** THIS WORKS ON WEB ONLY */
