@@ -50,7 +50,7 @@ const Step3 = ({ navigation }) => {
                             </View>
                     }
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('TakePhotoPage')}
+                        onPress={() => navigation.navigate('TakePhoto')}
                         style={styles.bigbutton}>
                         <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>RETAKE PHOTO</Text>
                     </TouchableOpacity>
