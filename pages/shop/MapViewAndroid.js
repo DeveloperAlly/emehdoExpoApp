@@ -76,7 +76,7 @@ const MapViewAndroid = ({ myLocation, navigation }) => {
                     <Text style={{ color: 'grey', textAlign: 'center' }}>BACK</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('FinalStep')}
+                    onPress={() => navigation.navigate('VerifyConnection')}
                     style={styles.mainbutton}>
                     <Text style={{ color: 'ghostwhite', textAlign: 'center' }}>NEXT</Text>
                 </TouchableOpacity>
