@@ -25,6 +25,7 @@ import VerifyConnectionPage from './pages/home/homescreens/verifyConnectionPage'
 import TakePhotoPage from './pages/home/homescreens/takePhotoPage';
 import ShareLocationPage from './pages/home/homescreens/shareLocationPage';
 import ImagePreview from './pages/home/homescreens/imagePreview';
+import Step3 from './pages/home/homescreens/step3';
 import FinalStep from './pages/home/homescreens/finalStep';
 import LocationScreen from './pages/shop/LocationScreen';
 import { MapContainer } from './pages/payments/Map';
@@ -118,6 +119,7 @@ export default function App() {
         <NestedStack.Screen name="ConfirmDetails" component={ConfirmDetailsPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="IsHardwareReady" component={IsHardwareReadyPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="VerifyConnection" component={VerifyConnectionPage} options={{ headerShown: false }} />
+        <NestedStack.Screen name="Step3" component={Step3} options={{ headerShown: false }} />
         <NestedStack.Screen name="FinalStep" component={FinalStep} options={{ headerShown: false }} />
         <NestedStack.Screen name="TakePhoto" component={TakePhotoPage} options={{ headerShown: false }} />
         <NestedStack.Screen name="ImagePreview" component={ImagePreview} options={{ headerShown: false }} />
